@@ -295,6 +295,10 @@ app.post('/api/admin/offers', auth, requireRole(['administrateur', 'manager']), 
 
 app.use(express.static('dist'));
 
+app.get('*', (_req, res) => {
+  res.sendFile('index.html', { root: 'dist' });
+});
+
 app.listen(PORT, () => {
   console.log(`Contacts La Résidence prêt sur http://localhost:${PORT}`);
 });
